@@ -1,0 +1,10 @@
+import cv2
+image = cv2.imread('C:/Users/saihe/OneDrive/Desktop/cv/images.jpeg', cv2.IMREAD_GRAYSCALE)
+image_blur = cv2.GaussianBlur(image, (3, 3), 0, 0)
+sobel_x = cv2.Sobel(image_blur, cv2.CV_64F, 1, 0, ksize=5)
+sobel_y = cv2.Sobel(image_blur, cv2.CV_64F, 0, 1, ksize=5)
+magnitude, direction = cv2.cartToPolar(sobel_x, sobel_y)
+cv2.imshow('Original Image', image)
+cv2.imshow('Filtered Image', image_blur)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
